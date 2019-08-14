@@ -1,18 +1,28 @@
 // For format details, see https://aka.ms/vscode-remote/devcontainer.json or the definition README at
 // https://github.com/microsoft/vscode-dev-containers/tree/master/containers/python-3
 {
-	"name": "Python 3",
+	"name": "Microblog",
 	"context": "..",
-	"dockerFile": "Dockerfile",
+	// "dockerFile": "Dockerfile",
 
 	// Uncomment the next line if you want to publish any ports.
-	"appPort": 5000,
+	// "appPort": 5000,
 
 	// Uncomment the next line to run commands after the container is created.
 	// "postCreateCommand": "python --version",
 
 	// Uncomment the next line to use a non-root user. See https://aka.ms/vscode-remote/containers/non-root-user.
-	"runArgs": [ "-u", "1000" ],
+	// "runArgs": [ "-u", "1000" ],
+
+	"dockerComposeFile": [
+        "docker-compose.yaml"
+    ],
+	"service": "microblog",
+    "workspaceFolder": "/workspace",
+    "shutdownAction": "stopCompose",
+
+	// [Optional] If you are using SSH keys w/Git, copy them and set correct permissions
+	"postCreateCommand": "mkdir -p ~/.ssh && cp -r ~/.ssh-localhost/id_rsa.pub ~/.ssh && chmod 700 ~/.ssh && chmod 600 ~/.ssh/*",
 
 	"extensions": [
 		"ms-python.python",
