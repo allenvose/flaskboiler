@@ -1,0 +1,43 @@
+version: "3.7"
+services:
+
+  microblog:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    user: vscode
+    ports:
+      - "5000:5000"
+    networks:
+      - frontend
+      - backend
+    volumes:
+      # Mounts the project folder to '/workspace'. The target path inside the container
+      # should match what your application expects. In this case, the compose file is
+      # in a sub-folder, so we will mount '..'. We'll then reference this as the
+      # workspaceFolder in '.devcontainer/devcontainer.json' so VS Code starts here.
+      - ..:/workspace
+
+      # [Optional] If you are using SSH keys w/Git, mount your .ssh folder to
+      # /root/.ssh-localhost so we can copy its contents
+      - ~/.ssh:/home/vscode/.ssh-localhost:ro
+    # Overrides default command so things don't shut down after the process ends.
+    command: sleep infinity
+
+  db:
+    image: postgres:11
+    environment:
+      - POSTGRES_PASSWORD=mysecretpassword
+    volumes:
+      - ../db-data:/var/lib/postgresql/data
+    ports: 
+      - 5432:5432
+    networks:
+      - backend
+
+networks:
+  frontend:
+  backend:
+
+volumes:
+  db-data:
