@@ -1,2 +1,2 @@
 FLASK_APP=/workspace/microblog.py
-DATABASE_URL="postgresql://postgres:mysecretpassword@db:5432/postgres"
+DATABASE_URL="mysql+pymysql://allenvose:ryanlion22@mysqldb:3306/CERP"

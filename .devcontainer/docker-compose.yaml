@@ -20,7 +20,7 @@ services:
 
       # [Optional] If you are using SSH keys w/Git, mount your .ssh folder to
       # /root/.ssh-localhost so we can copy its contents
-      - ~/.ssh:/home/vscode/.ssh-localhost:ro
+      # - ~/.ssh:/home/vscode/.ssh-localhost:ro
     # Overrides default command so things don't shut down after the process ends.
     command: sleep infinity
 
@@ -32,6 +32,17 @@ services:
       - ../db-data:/var/lib/postgresql/data
     ports: 
       - 5432:5432
+    networks:
+      - backend
+      
+  mysqldb:
+    image: mysql:5.7
+    env_file:
+      - ../mysql-variables.env
+    #volumes:
+    #  - ../db-data:/etc/mysql/
+    ports: 
+      - 3306:3306
     networks:
       - backend
 

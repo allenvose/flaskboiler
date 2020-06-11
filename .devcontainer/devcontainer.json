@@ -22,12 +22,13 @@
     "shutdownAction": "stopCompose",
 
 	// [Optional] If you are using SSH keys w/Git, copy them and set correct permissions
-	"postCreateCommand": "mkdir -p ~/.ssh && cp -r ~/.ssh-localhost/id_rsa.pub ~/.ssh && chmod 700 ~/.ssh && chmod 600 ~/.ssh/*",
+	// "postCreateCommand": "mkdir -p ~/.ssh && cp -r ~/.ssh-localhost/id_rsa.pub ~/.ssh && chmod 700 ~/.ssh && chmod 600 ~/.ssh/*",
 
 	"extensions": [
 		"ms-python.python",
 		"patbenatar.advanced-new-file",
-		"aaron-bond.better-comments"
+		"aaron-bond.better-comments",
+		"cweijan.vscode-mysql-client2"
 	],
 	"settings": {
 		"python.pythonPath": "/usr/local/bin/python",

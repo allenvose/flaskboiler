@@ -1,5 +1,21 @@
 {
     "python.linting.pylintEnabled": true,
     "python.linting.flake8Enabled": false,
-    "python.linting.enabled": true
+    "python.linting.enabled": true,
+    "sqltools.connections": [
+        {
+            "askForPassword": true,
+            "database": "CERP",
+            "driver": "MySQL",
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "name": "CERP",
+            "password": "ryanlion22",
+            "port": 3306,
+            "previewLimit": 50,
+            "server": "localhost",
+            "username": "allenvose"
+        }
+    ]
 }
